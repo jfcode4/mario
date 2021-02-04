@@ -11,7 +11,7 @@ static void update() {
 }
 
 static void render() {
-	game_render_clear(color_a(92, 148, 252, 255));
+	game_render_clear((game_ColorA){92, 148, 252, 255});
 
 	level_render();
 	player_render();

@@ -1,4 +1,4 @@
-CC = c89
+CC = c99
 CFLAGS = -g -Wall -Wextra -Wpedantic
 INCS = -I ~/.local/include
 LIBS = -L ~/.local/lib -lgame -lvec -lSDL2 -lSDL2_image
