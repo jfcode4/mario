@@ -18,7 +18,7 @@ int level_init() {
 	level.sprites = vec(game_Sprite);
 	level.collisions = vec(int);
 
-	sprintf(buffer, "%s%s", data_dir, "/mario/tileset.png");
+	sprintf(buffer, "%s%s", data_dir, "/tileset.png");
 	if ((level.tileset_texture_id = game_add_texture(buffer)) < 0) {
 		return 0;
 	}

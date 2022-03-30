@@ -3,8 +3,9 @@
 
 #include <game.h>
 
-#include "player.h"
+#include "config.h"
 #include "level.h"
+#include "player.h"
 
 static void update() {
 	player_update();
@@ -30,6 +31,10 @@ int main(int argc, char **argv) {
 		if (scale == 0) {
 			return 1;
 		}
+	}
+	if (!find_data_dir()) {
+		fprintf(stderr, "Could not find assets directory\n");
+		return -4;
 	}
 	if (!game_init(256, 240, "Mario", scale, 0))
 		return -1;

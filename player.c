@@ -38,7 +38,7 @@ int player_init() {
 
 	player.velocity = (game_Vec2){0, 0};
 
-	sprintf(buffer, "%s%s", data_dir, "/mario/mario_luigi.png");
+	sprintf(buffer, "%s%s", data_dir, "/mario-luigi.png");
 	if ((player.sprite.texture_id = game_add_texture(buffer)) < 0)
 		return 0;
 	player.sprite.texture_area = (game_Rect){82, 34, 12, 16};

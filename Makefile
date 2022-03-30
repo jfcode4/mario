@@ -5,7 +5,7 @@ LIBS = -L ~/.local/lib -lgame -lvec -lSDL2 -lSDL2_image
 
 PREFIX = ~/.local
 
-mario: main.o player.o level.o
+mario: main.o player.o level.o config.o
 	$(CC) $^ -o $@ $(LIBS)
 
 %.o: %.c
