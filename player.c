@@ -14,34 +14,34 @@ struct {
 } player;
 
 static game_Rect player_collision_rect() {
-	return (game_Rect){
+	return game_rect(
 		player.sprite.area.x,
 		player.sprite.area.y + 1,
 		player.sprite.area.w,
-		player.sprite.area.h - 2};
+		player.sprite.area.h - 2);
 }
 
 static game_Rect player_ground_rect() {
-	return (game_Rect){
+	return game_rect(
 		player.sprite.area.x,
 		player.sprite.area.y + player.sprite.area.h - 1,
 		player.sprite.area.w,
-		1};
+		1);
 
 }
 
 int player_init() {
 	char buffer[1024];
 
-	player.pos = (game_Vec2){40, 194};
-	player.sprite.area = (game_Rect){(int) player.pos.x, (int) player.pos.y, 12, 16};
+	player.pos = game_vec2(40, 194);
+	player.sprite.area = game_rect((int) player.pos.x, (int) player.pos.y, 12, 16);
 
 	player.velocity = (game_Vec2){0, 0};
 
 	sprintf(buffer, "%s%s", data_dir, "/mario-luigi.png");
 	if ((player.sprite.texture_id = game_add_texture(buffer)) < 0)
 		return 0;
-	player.sprite.texture_area = (game_Rect){82, 34, 12, 16};
+	player.sprite.texture_area = game_rect(82, 34, 12, 16);
 
 	player.player_collision = game_collision_add(player_collision_rect());
 	player.ground_collision = game_collision_add(player_ground_rect());
@@ -165,17 +165,17 @@ void player_update() {
 	}
 
 	if (player.sprite.area.x < 112) {
-		game_camera_set((game_Point){0, 0});
+		game_camera_set(game_point(0, 0));
 	} else {
-		game_camera_set((game_Point){player.sprite.area.x - 112, 0});
+		game_camera_set(game_point(player.sprite.area.x - 112, 0));
 	}
 
 	/* Losing */
 	if (player.sprite.area.y > 480) {
-		player.pos = (game_Vec2){40, 194};
+		player.pos = game_vec2(40, 194);
 		player.sprite.area.x = (int) player.pos.x;
 		player.sprite.area.y = (int) player.pos.y;
-		player.velocity = (game_Vec2){0, 0};
+		player.velocity = game_vec2(0, 0);
 	}
 
 }
